@@ -43,7 +43,7 @@ data "hcloud_ssh_keys" "keys_by_selector" {
 resource "hcloud_server" "app1" {
   name        = "app1"
   server_type = "cx11" # Cheapest VM type
-  image       = "ubuntu-24.04"
+  image       = "debian-12"
   labels = {
     project = "schulung1"
   }
@@ -60,6 +60,13 @@ resource "hcloud_server" "app1" {
     hcloud_network_subnet.private_subnet
   ]
   ssh_keys = data.hcloud_ssh_keys.all_keys.ssh_keys.*.name
+}
+
+resource "hcloud_server_network" "app1network" {
+  server_id = hcloud_server.app1.id
+  // network_id = hcloud_network.private_network.id
+  subnet_id = hcloud_network_subnet.private_subnet.id
+  ip        = "10.0.12.11"
 }
 
 resource "hcloud_server" "db1" {
@@ -106,4 +113,45 @@ resource "hcloud_server" "jump1" {
     ipv6_enabled = false
   }
   ssh_keys = data.hcloud_ssh_keys.all_keys.ssh_keys.*.name
+}
+
+// Load balancer to point to the app server,
+// connect LB port 80 to app1 port 80
+resource "hcloud_load_balancer" "lb1" {
+  name               = "applb1"
+  load_balancer_type = "lb11"
+  location           = "fsn1"
+}
+
+
+resource "hcloud_load_balancer_network" "srvnetwork" {
+  load_balancer_id = hcloud_load_balancer.lb1.id
+  network_id       = hcloud_network.private_network.id
+  ip               = "10.0.12.5"
+
+  # **Note**: the depends_on is important when directly attaching the
+  # server to a network. Otherwise Terraform will attempt to create
+  # server and sub-network in parallel. This may result in the server
+  # creation failing randomly.
+  depends_on = [
+    hcloud_network_subnet.private_subnet
+  ]
+}
+
+resource "hcloud_load_balancer_target" "load_balancer_target" {
+  type             = "server"
+  load_balancer_id = hcloud_load_balancer.lb1.id
+  server_id        = hcloud_server.app1.id
+  use_private_ip   = true
+  depends_on = [
+    hcloud_load_balancer_network.srvnetwork
+  ]
+}
+
+data "hcloud_load_balancer" "datalb1" {
+  name = "applb1"
+}
+
+output "datalb1" {
+  value = data.hcloud_load_balancer.datalb1
 }
