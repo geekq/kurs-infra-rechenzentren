@@ -4,7 +4,7 @@ terraform {
       source  = "hetznercloud/hcloud"
       version = "~> 1.48.1" // newest version as of 2024-10-19
     }
-    apt-package = {
+    aptpackage = {
       source  = "infrastructure-as-code.de/example/apt-package"
       // version = "1.0.0"
     }
@@ -159,4 +159,13 @@ data "hcloud_load_balancer" "datalb1" {
 
 output "datalb1" {
   value = data.hcloud_load_balancer.datalb1
+}
+
+
+provider "aptpackage" {}
+
+resource "aptpackage" "nginx" {
+  server = hcloud_server.app1.ipv4_address
+  name    = "nginx"
+  version = "1.18.0-6ubuntu14.5" # Optional
 }

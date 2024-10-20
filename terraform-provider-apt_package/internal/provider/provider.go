@@ -21,7 +21,7 @@ func (p *AptProvider) DataSources(context.Context) []func() datasource.DataSourc
 }
 
 func (p *AptProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
-	resp.TypeName = "apt_package"
+	resp.TypeName = "aptpackage"
 }
 
 func (p *AptProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
