@@ -4,8 +4,13 @@ terraform {
       source  = "hetznercloud/hcloud"
       version = "~> 1.48.1" // newest version as of 2024-10-19
     }
+    apt-package = {
+      source  = "infrastructure-as-code.de/example/apt-package"
+      // version = "1.0.0"
+    }
   }
 }
+
 variable "hcloud_token" {
   description = "Hetzner Cloud API token"
   type        = string
