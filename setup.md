@@ -3,7 +3,7 @@
 Auf frischem Ubuntu 24.04
 
 ```
-sudo apt-get install -y python3 git ansible gnupg software-properties-common
+sudo apt-get install -y python3 git ansible gnupg software-properties-common nano
 ```
 
 Terraform installieren:
