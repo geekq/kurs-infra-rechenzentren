@@ -1,3 +1,18 @@
+## Infrastruktur per Terraform erstellen
+
+Terraform Datei herunterladen
+
+https://raw.githubusercontent.com/geekq/kurs-infra-rechenzentren/refs/heads/main/tf-example-web-app-hetzner-vms/main.tf
+
+Und Projektnamen anpassen von schulung1 auf schulung-teamN
+
+```
+terraform plan
+terraform apply
+```
+
+---
+
 ## Http Proxy
 
 ### Auf der Machine mit public IP
@@ -25,4 +40,3 @@ apt-get update
 Man kann während des Updates auf dem proxy Server die Aufrufe verfolgen
 
     tail -f /var/log/squid/access.log
-    
