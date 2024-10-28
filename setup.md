@@ -33,6 +33,7 @@ SSH Schlüsselpaar erstellen, falls man noch keine hat:
     cd .ssh
     ssh-keygen
     ls -al
+    cat schulung.pub
 
 Es werden public key (.pub) und private key (ohne Dateierweiterung) erstellt.
 
