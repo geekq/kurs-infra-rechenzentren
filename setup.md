@@ -28,6 +28,9 @@ sudo apt-get install -y terraform
 
 SSH Schlüsselpaar erstellen, falls man noch keine hat:
 
+    cd
+    mkdir .ssh
+    cd .ssh
     ssh-keygen
 
 Es werden public key (.pub) und private key (ohne Dateierweiterung) erstellt.
