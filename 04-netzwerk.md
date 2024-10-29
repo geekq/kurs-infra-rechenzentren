@@ -36,9 +36,13 @@ Den Proxy-Server neu starten
 ### Http Proxy nutzen (auf den Servern im privaten Netz)
 
 ```
+# Stand vorher checken
+apt-get update # funktioniert nicht, weil keine Verbindung zum Internet
+
 export http_proxy="http://10.0.12.51:3128"
 export https_proxy="http://10.0.12.51:3128"
-apt-get update
+
+apt-get update # funktioniert jetzt!
 ```
 
 Man kann während des Updates auf dem proxy Server die Aufrufe verfolgen
