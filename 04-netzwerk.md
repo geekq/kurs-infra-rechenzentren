@@ -32,6 +32,8 @@ Zeile hinzufügen / einkommentieren und die derzeitige Liste für `localnet`
 Den Proxy-Server neu starten
 
     systemctl restart squid
+    systemctl status squid
+    netstat -tulpen
 
 ### Http Proxy nutzen (auf den Servern im privaten Netz)
 
@@ -57,6 +59,8 @@ Aufgabe: auf beiden Web/App-Servern nginx installieren und eine Homepage mit ver
 apt-get update
 apt-get install nginx
 nano /var/www/html/...
+systemctl status nginx
+netstat -tulpen
 ```
 
 Beide Web/App-Server in das Load-Balancing einbinden.
