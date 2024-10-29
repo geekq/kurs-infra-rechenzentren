@@ -1,3 +1,9 @@
+## Aufgabe 2
+
+![Aufgabe2](aufgabeN2.mermaid.png)
+
+---
+
 ## Infrastruktur per Terraform erstellen
 
 Terraform Datei herunterladen
