@@ -29,8 +29,8 @@ chmod +r /etc/apt/trusted.gpg.d/proxmox-ve-release-7.x.gpg
 -->
 
 ```
+uname -a # vorher - normaler Kernel, ohne proxmox-Erweiterungen
 apt install proxmox-default-kernel
-uname -a
 systemctl reboot
 
 uname -a # sollte kernel mit proxmox-Erweiterungen zeigen
@@ -49,7 +49,7 @@ sollte die public IP des Hosts zeigen - vergleiche mit dem Wert in Hetzner konso
 
 ## Proxmox management UI aufrufen
 
-https://<your-server-ip-address>:8006
+    https://<your-server-ip-address>:8006
 
 ## Firewall - Portmapper Port schützen
 
