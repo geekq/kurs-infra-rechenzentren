@@ -2,6 +2,24 @@
 
 ![Aufgabe2](aufgabeN2.mermaid.png)
 
+SSH auf den Jump-Host:
+
+    ssh root@<public-ip>
+
+Tunnel auf die Server im privaten Netzwerk
+
+    ssh -A -J root@<public-ip> root@<private-ip>
+
+Auf beiden Web/App-Servern nginx installieren und eine Homepage mit verschiedenen Inhalten vorbereiten:
+
+```
+apt-get install nginx
+nano /var/www/html/...
+```
+
+Beide Web/App-Server in das Load-Balancing einbinden.
+Die IP von dem Load-Balancer aufrufen und die Seite im Browser auffrischen. Kommen da mal die, mal die anderen Inhalte?
+
 ---
 
 ## Infrastruktur per Terraform erstellen
