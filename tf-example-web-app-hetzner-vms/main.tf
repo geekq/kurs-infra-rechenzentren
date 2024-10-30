@@ -148,7 +148,7 @@ resource "hcloud_load_balancer_target" "load_balancer_target" {
     hcloud_load_balancer_network.srvnetwork
   ]
 }
-
+/*
 data "hcloud_load_balancer" "datalb1" {
   name = "applb1"
 }
@@ -156,3 +156,4 @@ data "hcloud_load_balancer" "datalb1" {
 output "datalb1" {
   value = data.hcloud_load_balancer.datalb1
 }
+*/
