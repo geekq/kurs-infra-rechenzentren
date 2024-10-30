@@ -23,7 +23,7 @@ kubectl get pods --all-namespaces
 kubectl get services
 ```
 
-## Weiteren Knoten hinzufügen
+## Weitere Knoten hinzufügen
 
 Lese die Ausgabe der ersten Befehle durch und suche in der Ausgabe nach
 Text wie
@@ -83,8 +83,14 @@ http://ip172-18-0-134-csh82u0i715g00ffo6r0.direct.labs.play-with-k8s.com:30584
 
 ## Andere Beispiel-Anwendungen ausprobieren
 
+### Gastbuch-Anwendung
+
+https://kubernetes.io/docs/tutorials/stateless-application/guestbook/
+
+Vergleiche auch kubernetes Manifest unter
 https://github.com/kubernetes/examples/blob/master/guestbook/all-in-one/guestbook-all-in-one.yaml
 
+Alte Version: (ContainerImageErr)
 ```
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/examples/master/guestbook/all-in-one/guestbook-all-in-one.yaml
 kubectl get deployments
